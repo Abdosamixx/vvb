@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أزرار الرصيد</title>
+</head>
+<body>
+
+<p>الصفحة الأولى</p>
+<button onclick="addMoney('https://example.com')">OK1</button>
+<button onclick="addMoney('https://example2.com')">OK2</button>
+<button onclick="addMoney('https://example3.com')">OK3</button>
+<button onclick="addMoney('https://example4.com')">OK4</button>
+<button onclick="addMoney('https://example5.com')">OK5</button>
+<span id="moneyDisplay">الرصيد: 0 دولار</span>
+
+<script>
+    // تحديث عرض المال عند تحميل الصفحة
+    window.onload = function() {
+        updateMoneyDisplay();
+
+        // تحديث عرض المال عند حدوث تغيير في localStorage
+        window.addEventListener('storage', function() {
+            updateMoneyDisplay();
+        });
+    };
+
+    function addMoney(url) {
+        alert('تمت إضافة 0.2 دولار!');
+        var currentAmount = parseFloat(localStorage.getItem("money")) || 0;
+        var newAmount = currentAmount + 0.2;
+        localStorage.setItem("money", newAmount.toFixed(2));
+        updateMoneyDisplay();
+
+        // تحويل المستخدم إلى الرابط المحدد
+        window.location.href = url;
+    }
+
+    function updateMoneyDisplay() {
+        var currentAmount = parseFloat(localStorage.getItem("money")) || 0;
+        document.getElementById("moneyDisplay").innerText = 'الرصيد: ' + currentAmount.toFixed(2) + ' دولار';
+    }
+</script>
+<a href="money.html">sit 1</a>
+</body>
+</html>

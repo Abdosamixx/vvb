@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المبلغ المالي</title>
+</head>
+<body>
+
+<h1>المبلغ المالي</h1>
+<span id="moneyDisplay">المبلغ: 0 دولار</span>
+
+<script>
+    // استخدام window.onload للتأكد من تحميل الصفحة بالكامل قبل تنفيذ السكريبت
+    window.onload = function() {
+        updateMoneyDisplay();
+
+        // تحديث قيمة المبلغ عند تحديث الصفحة
+        window.addEventListener('storage', function() {
+            updateMoneyDisplay();
+        });
+    };
+
+    // وظيفة لتحديث عرض المبلغ
+    function updateMoneyDisplay() {
+        var currentAmount = parseInt(localStorage.getItem("money")) || 0;
+        document.getElementById("moneyDisplay").innerText = 'المبلغ: ' + currentAmount + ' دولار';
+    }
+</script>
+<a href="index.html">sit 1</a>
+</body>
+</html>
